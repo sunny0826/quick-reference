@@ -181,7 +181,11 @@
 
 
 
-<table class="style-list-arrow"><thead><tr><th align="left">Command</th><th>Description</th></tr></thead><tbody><tr><td align="left"><code>conda create -n &#x3C;ENVNAME> python=3.10</code></td><td>指定Python版本创建环境</td></tr><tr><td align="left"><code>conda create --clone &#x3C;ENVNAME> -n &#x3C;NEWENV></code></td><td>从已有环境克隆一个新环境</td></tr><tr><td align="left"><code>conda rename -n &#x3C;ENVNAME> &#x3C;NEWENVNAME></code></td><td>对环境名字重命名</td></tr><tr><td align="left"><code>conda remove -n &#x3C;ENVNAME> --all</code></td><td>通过名字删除一个环境</td></tr><tr><td align="left"><code>conda list -n &#x3C;ENVNAME> --revisions</code></td><td>列出环境的各个修订版本</td></tr><tr><td align="left"><code>conda install -n &#x3C;ENVNAME> --revision &#x3C;NUMBER>"</code></td><td>回滚到环境的某个版本本</td></tr></tbody></table>
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">Command</th><th>Description</th></tr></thead><tbody><tr><td align="left"><code>conda create -n &#x3C;ENVNAME> python=3.10</code></td><td>指定Python版本创建环境</td></tr><tr><td align="left"><code>conda create --clone &#x3C;ENVNAME> -n &#x3C;NEWENV></code></td><td>从已有环境克隆一个新环境</td></tr><tr><td align="left"><code>conda rename -n &#x3C;ENVNAME> &#x3C;NEWENVNAME></code></td><td>对环境名字重命名</td></tr><tr><td align="left"><code>conda remove -n &#x3C;ENVNAME> --all</code></td><td>通过名字删除一个环境</td></tr><tr><td align="left"><code>conda env remove -n  &#x3C;ENVNAME></code></td><td>通过名字删除一个环境</td></tr><tr><td align="left"><code>conda list -n &#x3C;ENVNAME> --revisions</code></td><td>列出环境的各个修订版本</td></tr><tr><td align="left"><code>conda install -n &#x3C;ENVNAME> --revision &#x3C;NUMBER>"</code></td><td>回滚到环境的某个版本本</td></tr></tbody></table>
 <!--rehype:className=style-list-arrow-->
 <p>关于 <code>conda</code> 环境回滚可参考：<a href="https://www.pybloggers.com/2016/06/conda-revisions-letting-you-rollback-to-a-previous-version-of-your-environment/">这里</a></p>
 </div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="导出环境配置"><a aria-hidden="true" tabindex="-1" href="#导出环境配置"><span class="icon icon-link"></span></a>导出环境配置</h3><div class="wrap-body">
@@ -228,6 +232,13 @@
 </span><span class="code-line">conda search <span class="token operator">&#x3C;</span>PKGNAME<span class="token operator">></span> <span class="token parameter variable">--info</span>
 </span><span class="code-line">conda clean <span class="token parameter variable">--all</span> <span class="token comment"># 清除所有未使用的文件</span>
 </span><span class="code-line">conda config <span class="token parameter variable">--show</span> <span class="token comment"># 检查conda配置</span>
+</span></code></pre>
+<p>设置指定环境为默认环境</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">vim</span> ~/.bashrc
+</span><span class="code-line"><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token string">"~/anaconda/envs/ENVNAME/bin:<span class="token environment constant">$PATH</span>"</span>  <span class="token comment"># 文件末尾添加</span>
+</span><span class="code-line">conda activate ENVNAME  <span class="token comment"># :wq 保存并关闭</span>
+</span><span class="code-line"><span class="token builtin class-name">source</span> ~/.bashrc  <span class="token comment"># 更新</span>
+</span><span class="code-line">conda config <span class="token parameter variable">--set</span> auto_activate_base <span class="token boolean">false</span> <span class="token comment"># 禁用auto activate base环境</span>
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="额外提示"><a aria-hidden="true" tabindex="-1" href="#额外提示"><span class="icon icon-link"></span></a>额外提示</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">conda COMMAND <span class="token parameter variable">--help</span>  <span class="token comment"># 获得任何命令的帮助</span>
