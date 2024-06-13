@@ -1,7 +1,7 @@
 name: auto sync reference
 on:
   schedule:
-    - cron: '18 */24 * * *' # 定时任务
+    - cron: '18 */48 * * *' # 定时任务
   workflow_dispatch:       # 手动运行
 
 env: # 设置环境变量
